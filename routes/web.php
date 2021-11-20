@@ -22,9 +22,13 @@ Route::get('/photos', function () {
     return view('site.photos');
 })->name('site.photos');
 
-Route::get('/login', function () {
-    return view('site.login');
-})->name('site.login');
+// Route::get('/login', function () {
+//     return view('site.login');
+// })->name('site.login');
 
 Route::get('/contact', [CadastroController::class, 'create']);
 Route::post('/contact/new', [CadastroController::class, 'store']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

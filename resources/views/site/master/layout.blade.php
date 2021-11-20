@@ -30,15 +30,33 @@
               <a class="nav-link" href="photos">Fotos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about">Sobre</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="contact">Contato</a>
             </li>
           </ul>
+          @auth
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Painel</a>
+            </li>
+            <li class="nav-item">
+              <form action="/logout" method="POST">
+                @csrf
+                <a href="/logout" class="nav-link" onclick="event.preventDefault();
+                this.closest('form').submit();">
+                  Sair
+                </a>
+              </form>
+            </li>
+          </ul>
+          @endauth
+          @guest
           <form class="nav-item">
             <a class="nav-link" href="login">Login</a>
           </form>
+          <form class="nav-item">
+            <a class="nav-link" href="register">Cadastrar</a>
+          </form>
+          @endguest
         </div>
       </div>
     </nav>
