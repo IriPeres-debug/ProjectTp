@@ -26,8 +26,10 @@ Route::get('/photos', function () {
 //     return view('site.login');
 // })->name('site.login');
 
+
 Route::get('/contact', [CadastroController::class, 'create']);
 Route::post('/contact/new', [CadastroController::class, 'store']);
+Route::get('list', [CadastroController::class, 'show']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
